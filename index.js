@@ -14,8 +14,7 @@ const FRONTEND_URL =
 app.use(
     cors({
         origin: FRONTEND_URL,
-        methods: ["GET", "POST"], // optional, specify allowed methods
-        credentials: true, // if you need cookies/auth
+        methods: ["GET", "POST"],
     })
 );
 
