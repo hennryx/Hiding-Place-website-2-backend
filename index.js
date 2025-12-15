@@ -8,7 +8,17 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const FRONTEND_URL =
+    process.env.FRONTEND_URL || "https://hiding-place-website-2.vercel.app/";
+
+app.use(
+    cors({
+        origin: FRONTEND_URL,
+        methods: ["GET", "POST"], // optional, specify allowed methods
+        credentials: true, // if you need cookies/auth
+    })
+);
+
 app.use(express.json());
 
 connectDB().catch((Error) => {
