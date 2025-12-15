@@ -11,7 +11,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-connectDB().catch(console.error);
+connectDB().catch((Error) => {
+    console.error(Error);
+    process.exit(1);
+});
 
 app.get("/api/test", (req, res) => {
     res.json({ message: "API working" });
@@ -53,8 +56,6 @@ app.get("/api/visitor", async (req, res) => {
     }
 });
 
-export default app;
-
-// app.listen(3000, () => {
-//     console.log("Server running on http://localhost:3000");
-// });
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+});
