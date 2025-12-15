@@ -9,18 +9,6 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const FRONTEND_URL =
-    process.env.FRONTEND_URL || "https://hiding-place-website-2.vercel.app";
-
-app.use(
-    cors({
-        origin: FRONTEND_URL,
-        methods: ["GET", "POST"],
-        optionsSuccessStatus: 200,
-    })
-);
-app.options("*", cors({ origin: FRONTEND_URL }));
-
 app.use(express.json());
 
 connectDB().catch((Error) => {
